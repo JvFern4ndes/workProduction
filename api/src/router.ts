@@ -1,11 +1,13 @@
 import { Router } from 'express';
 
+import { listEmployees } from './app/useCases/Employees/listEmployees';
+
 export const router = Router();
 
 // Create employees
 router.post('/employees', );
 // List employees
-router.get('/employees', );
+router.get('/employees', listEmployees);
 // Update employees
 router.patch('employees/:employeeId', );
 // Delete employees
