@@ -1,11 +1,12 @@
 import { Router } from 'express';
 
+import { createEmployees } from './app/useCases/Employees/createEmployee';
 import { listEmployees } from './app/useCases/Employees/listEmployees';
 
 export const router = Router();
 
 // Create employees
-router.post('/employees', );
+router.post('/employees', createEmployees);
 // List employees
 router.get('/employees', listEmployees);
 // Update employees
