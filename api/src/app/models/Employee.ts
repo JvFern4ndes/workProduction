@@ -7,11 +7,12 @@ export const Employee = model('Employee', new Schema({
   },
   email: {
     type: String,
-    required: true,
   },
   phone: {
     type: String,
-    required: true,
+  },
+  imagePath: {
+    type: String,
   },
   userName: {
     type: String,
