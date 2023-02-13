@@ -19,3 +19,7 @@ Express.js, or simply Express, is a back end web application framework for build
 ## mongoDB
 MongoDB will be the database used in the project.
 MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas. MongoDB is developed by MongoDB Inc. and licensed under the Server Side Public License which is deemed non-free by several distributions. 
+
+## Mongoose
+Mongoose will be the Object Data Modeling (ODM) used in the project.
+Mongoose is an Object Data Modeling library for MongoDB and Node.js. It manages the relationship between data, provides schema validation, and is used as a translator between objects in code and the representation of those objects in MongoDB.
