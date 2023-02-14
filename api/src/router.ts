@@ -8,6 +8,7 @@ import { createEmployees } from './app/useCases/Employees/createEmployee';
 import { listEmployees } from './app/useCases/Employees/listEmployees';
 
 // Order
+import { createOrder } from './app/useCases/orders/createOrder';
 import { listOrders } from './app/useCases/orders/listOrders';
 
 // Client
@@ -51,7 +52,7 @@ router.patch('machines/:machineId', );
 router.delete('machines/:machineId', );
 
 // Create orders
-router.post('/orders', );
+router.post('/orders', createOrder);
 // List orders
 router.get('/orders', listOrders);
 // Update orders
