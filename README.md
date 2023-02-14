@@ -23,3 +23,7 @@ MongoDB is a source-available cross-platform document-oriented database program.
 ## Mongoose
 Mongoose will be the Object Data Modeling (ODM) used in the project.
 Mongoose is an Object Data Modeling library for MongoDB and Node.js. It manages the relationship between data, provides schema validation, and is used as a translator between objects in code and the representation of those objects in MongoDB.
+
+## Multer
+This project uses multer to handle image uploads to the database.
+Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency.
