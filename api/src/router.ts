@@ -10,7 +10,7 @@ import { listEmployees } from './app/useCases/Employees/listEmployees';
 // Order
 import { createOrder } from './app/useCases/orders/createOrder';
 import { listOrders } from './app/useCases/orders/listOrders';
-import { deleteOrder } from './app/useCases/orders/deleteOrder';
+import { cancelOrder } from './app/useCases/orders/cancelOrder';
 import { changeOrderStatus } from './app/useCases/orders/changeOrderStatus';
 
 // Client
@@ -60,7 +60,7 @@ router.get('/orders', listOrders);
 // Update orders
 router.patch('/orders/:orderId', changeOrderStatus);
 // Cancel orders
-router.delete('/orders/:orderId', deleteOrder);
+router.delete('/orders/:orderId', cancelOrder);
 
 // Create clients
 router.post('/clients', createClient);
