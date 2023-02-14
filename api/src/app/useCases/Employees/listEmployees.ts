@@ -7,7 +7,8 @@ export async function listEmployees(req: Request, res: Response) {
     const employees = await Employee.find();
 
     res.json(employees);
-  } catch {
+  } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }

@@ -7,7 +7,8 @@ export async function listItems(req: Request, res: Response) {
     const items = await Item.find();
 
     res.json(items);
-  } catch {
+  } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }

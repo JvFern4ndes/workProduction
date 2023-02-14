@@ -7,7 +7,8 @@ export async function listClients(req: Request, res: Response) {
     const clients = await Client.find();
 
     res.json(clients);
-  } catch {
+  } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }
