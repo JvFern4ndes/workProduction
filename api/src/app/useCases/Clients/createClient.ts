@@ -9,6 +9,12 @@ export async function createClient(req: Request, res: Response) {
       active,
     } = req.body;
 
+    if (!name) {
+      return res.status(400).json({
+        error: 'Name is required',
+      });
+    }
+
     const client = await Client.create({
       name,
       active,
