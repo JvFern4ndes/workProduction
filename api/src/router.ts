@@ -9,11 +9,14 @@ import { listEmployees } from './app/useCases/Employees/listEmployees';
 import { updateEmployee } from './app/useCases/Employees/updateEmployee';
 import { deleteEmployee } from './app/useCases/Employees/deleteEmployee';
 
+// Machine
+import { createMachine } from './app/useCases/Machines/createMachine';
+
 // Order
-import { createOrder } from './app/useCases/orders/createOrder';
-import { listOrders } from './app/useCases/orders/listOrders';
-import { cancelOrder } from './app/useCases/orders/cancelOrder';
-import { changeOrderStatus } from './app/useCases/orders/changeOrderStatus';
+import { createOrder } from './app/useCases/Orders/createOrder';
+import { listOrders } from './app/useCases/Orders/listOrders';
+import { cancelOrder } from './app/useCases/Orders/cancelOrder';
+import { changeOrderStatus } from './app/useCases/Orders/changeOrderStatus';
 
 // Client
 import { createClient } from './app/useCases/Clients/createClient';
@@ -47,7 +50,7 @@ router.patch('/employees/:employeeId', updateEmployee);
 router.delete('/employees/:employeeId', deleteEmployee);
 
 // Create machines
-router.post('/machines', );
+router.post('/machines', createMachine);
 // List machines
 router.get('/machines', );
 // Update machines
