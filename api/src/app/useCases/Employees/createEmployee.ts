@@ -14,6 +14,24 @@ export async function createEmployees(req: Request, res: Response) {
       period
     } = req.body;
 
+    if (!name) {
+      return res.status(400).json({
+        error: 'name is required',
+      });
+    }
+
+    if (!userName) {
+      return res.status(400).json({
+        error: 'userName is required',
+      });
+    }
+
+    if (!password) {
+      return res.status(400).json({
+        error: 'password is required',
+      });
+    }
+
     const employee = await Employee.create({
       name,
       email,

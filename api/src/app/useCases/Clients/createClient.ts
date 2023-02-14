@@ -11,7 +11,7 @@ export async function createClient(req: Request, res: Response) {
 
     if (!name) {
       return res.status(400).json({
-        error: 'Name is required',
+        error: 'name is required',
       });
     }
 
