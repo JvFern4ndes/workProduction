@@ -37,7 +37,7 @@ const upload = multer({
 });
 
 // Create employees
-router.post('/employees', createEmployees);
+router.post('/employees', upload.single('image'), createEmployees);
 // List employees
 router.get('/employees', listEmployees);
 // Update employees

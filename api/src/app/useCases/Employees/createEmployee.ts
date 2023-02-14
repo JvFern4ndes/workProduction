@@ -4,11 +4,11 @@ import { Employee } from '../../models/Employee';
 
 export async function createEmployees(req: Request, res: Response) {
   try {
+    const imagePath = req.file?.filename;
     const {
       name,
       email,
       phone,
-      imagePath,
       userName,
       password,
       period
@@ -35,7 +35,7 @@ export async function createEmployees(req: Request, res: Response) {
     const employee = await Employee.create({
       name,
       email,
-      phone,
+      phone: Number(phone),
       imagePath,
       userName,
       password,

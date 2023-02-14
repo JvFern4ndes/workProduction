@@ -9,7 +9,7 @@ export const Employee = model('Employee', new Schema({
     type: String,
   },
   phone: {
-    type: String,
+    type: Number,
   },
   imagePath: {
     type: String,
