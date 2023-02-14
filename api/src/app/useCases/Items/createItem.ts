@@ -4,24 +4,39 @@ import { Item } from '../../models/Item';
 
 export async function createItem(req: Request, res: Response) {
   try {
-    console.log(req.body);
-    // const {
-    //   name,
-    //   imagePath,
-    // } = req.body;
+    const imagePath = req.file?.filename;
+    const {
+      name,
+      measures,
+      client,
+    } = req.body;
 
-    // if (!name) {
-    //   return res.status(400).json({
-    //     error: 'name is required',
-    //   });
-    // }
+    if (!name) {
+      return res.status(400).json({
+        error: 'name is required',
+      });
+    }
 
-    // const item = await Item.create({
-    //   name,
-    //   imagePath,
-    // });
+    if (!measures) {
+      return res.status(400).json({
+        error: 'measures is required',
+      });
+    }
 
-    // res.status(201).json(item);
+    if (!client) {
+      return res.status(400).json({
+        error: 'client is required',
+      });
+    }
+
+    const item = await Item.create({
+      name,
+      imagePath,
+      measures: JSON.parse(measures),
+      client,
+    });
+
+    res.status(201).json(item);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

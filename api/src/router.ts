@@ -1,4 +1,7 @@
+import path from 'node:path';
+
 import { Router } from 'express';
+import multer from 'multer';
 
 // Employee
 import { createEmployees } from './app/useCases/Employees/createEmployee';
@@ -13,6 +16,17 @@ import { createItem } from './app/useCases/Items/createItem';
 import { listItems } from './app/useCases/Items/listItems';
 
 export const router = Router();
+
+const upload = multer({
+  storage: multer.diskStorage({
+    destination(req, file, callback) {
+      callback(null, path.resolve(__dirname, '..', 'uploads'));
+    },
+    filename(req, file, callback) {
+      callback(null, `${Date.now()}-${file.originalname}`);
+    }
+  }),
+});
 
 // Create employees
 router.post('/employees', createEmployees);
@@ -49,7 +63,7 @@ router.get('/clients', listClients);
 router.patch('clients/:clientId', );
 
 // Create items
-router.post('/items', createItem);
+router.post('/items', upload.single('image'), createItem);
 // List items
 router.get('/items', listItems);
 // Update items
