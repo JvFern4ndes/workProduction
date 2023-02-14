@@ -1,7 +1,11 @@
 import { Router } from 'express';
 
+// Employee
 import { createEmployees } from './app/useCases/Employees/createEmployee';
 import { listEmployees } from './app/useCases/Employees/listEmployees';
+
+// Client
+import { createClient } from './app/useCases/Clients/createClient';
 
 export const router = Router();
 
@@ -33,7 +37,7 @@ router.patch('orders/:orderId', );
 router.delete('orders/:orderId', );
 
 // Create clients
-router.post('/clients', );
+router.post('/clients', createClient);
 // List clients
 router.get('/clients', );
 // Update clients

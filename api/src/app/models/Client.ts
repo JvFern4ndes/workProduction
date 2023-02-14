@@ -8,6 +8,7 @@ export const Client = model('Client', new Schema({
   active: {
     type: Boolean,
     required: true,
+    default: true,
   },
   createdAt: {
     type: Date,
