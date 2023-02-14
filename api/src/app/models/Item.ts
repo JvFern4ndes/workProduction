@@ -8,6 +8,19 @@ export const Item = model('Item', new Schema({
   imagePath: {
     type: String,
   },
+  measures: {
+    required: true,
+    type: [{
+      name: {
+        type: String,
+        required: true,
+      },
+      value: {
+        type: String,
+        required: true,
+      },
+    }],
+  },
   client: {
     type: Schema.Types.ObjectId,
     required: true,
