@@ -9,6 +9,12 @@ export async function createItem(req: Request, res: Response) {
       imagePath,
     } = req.body;
 
+    if (!name) {
+      return res.status(400).json({
+        error: 'name is required',
+      });
+    }
+
     const item = await Item.create({
       name,
       imagePath,
