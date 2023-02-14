@@ -10,6 +10,7 @@ import { listEmployees } from './app/useCases/Employees/listEmployees';
 // Order
 import { createOrder } from './app/useCases/orders/createOrder';
 import { listOrders } from './app/useCases/orders/listOrders';
+import { deleteOrder } from './app/useCases/orders/deleteOrder';
 
 // Client
 import { createClient } from './app/useCases/Clients/createClient';
@@ -38,49 +39,49 @@ router.post('/employees', createEmployees);
 // List employees
 router.get('/employees', listEmployees);
 // Update employees
-router.patch('employees/:employeeId', );
+router.patch('/employees/:employeeId', );
 // Delete employees
-router.delete('employees/:employeeId', );
+router.delete('/employees/:employeeId', );
 
 // Create machines
 router.post('/machines', );
 // List machines
 router.get('/machines', );
 // Update machines
-router.patch('machines/:machineId', );
+router.patch('/machines/:machineId', );
 // Delete machines
-router.delete('machines/:machineId', );
+router.delete('/machines/:machineId', );
 
 // Create orders
 router.post('/orders', createOrder);
 // List orders
 router.get('/orders', listOrders);
 // Update orders
-router.patch('orders/:orderId', );
+router.patch('/orders/:orderId', );
 // Cancel orders
-router.delete('orders/:orderId', );
+router.delete('/orders/:orderId', deleteOrder);
 
 // Create clients
 router.post('/clients', createClient);
 // List clients
 router.get('/clients', listClients);
 // Update clients
-router.patch('clients/:clientId', );
+router.patch('/clients/:clientId', );
 
 // Create items
 router.post('/items', upload.single('image'), createItem);
 // List items
 router.get('/items', listItems);
 // Update items
-router.patch('items/:itemId', );
+router.patch('/items/:itemId', );
 // Delete items
-router.delete('items/:itemId', deleteItem);
+router.delete('/items/:itemId', deleteItem);
 
 // Create Production
 router.post('/productions', );
 // List Production
 router.get('/productions', );
 // Update Production
-router.patch('productions/:productionId', );
+router.patch('/productions/:productionId', );
 // Delete Production
-router.delete('productions/:productionId', );
+router.delete('/productions/:productionId', );
