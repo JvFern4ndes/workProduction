@@ -7,6 +7,9 @@ import multer from 'multer';
 import { createEmployees } from './app/useCases/Employees/createEmployee';
 import { listEmployees } from './app/useCases/Employees/listEmployees';
 
+// Order
+import { listOrders } from './app/useCases/orders/listOrders';
+
 // Client
 import { createClient } from './app/useCases/Clients/createClient';
 import { listClients } from './app/useCases/Clients/listClients';
@@ -50,7 +53,7 @@ router.delete('machines/:machineId', );
 // Create orders
 router.post('/orders', );
 // List orders
-router.get('/orders', );
+router.get('/orders', listOrders);
 // Update orders
 router.patch('orders/:orderId', );
 // Cancel orders
