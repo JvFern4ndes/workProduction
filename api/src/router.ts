@@ -12,6 +12,7 @@ import { deleteEmployee } from './app/useCases/Employees/deleteEmployee';
 // Machine
 import { createMachine } from './app/useCases/Machines/createMachine';
 import { listMachines } from './app/useCases/Machines/listMachines';
+import { updateMachine } from './app/useCases/Machines/updateMachine';
 
 // Order
 import { createOrder } from './app/useCases/Orders/createOrder';
@@ -55,7 +56,7 @@ router.post('/machines', createMachine);
 // List machines
 router.get('/machines', listMachines);
 // Update machines
-router.patch('/machines/:machineId', );
+router.patch('/machines/:machineId', updateMachine);
 // Delete machines
 router.delete('/machines/:machineId', );
 
