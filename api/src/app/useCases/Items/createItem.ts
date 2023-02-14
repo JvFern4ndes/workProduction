@@ -32,7 +32,7 @@ export async function createItem(req: Request, res: Response) {
     const item = await Item.create({
       name,
       imagePath,
-      measures: JSON.parse(measures),
+      measures: measures ? JSON.parse(measures) : [],
       client,
     });
 
