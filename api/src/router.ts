@@ -29,7 +29,11 @@ import { updateClient } from './app/useCases/Clients/updateClient';
 // Item
 import { createItem } from './app/useCases/Items/createItem';
 import { listItems } from './app/useCases/Items/listItems';
+import { updateItem } from './app/useCases/Items/updateItem';
 import { deleteItem } from './app/useCases/Items/deleteItem';
+
+// Production
+import { createProduction } from './app/useCases/Productions/createProduction';
 
 export const router = Router();
 
@@ -83,15 +87,13 @@ router.post('/items', upload.single('image'), createItem);
 // List items
 router.get('/items', listItems);
 // Update items
-router.patch('/items/:itemId', );
+router.patch('/items/:itemId', updateItem);
 // Delete items
 router.delete('/items/:itemId', deleteItem);
 
 // Create Production
-router.post('/productions', );
+router.post('/productions', createProduction);
 // List Production
 router.get('/productions', );
 // Update Production
 router.patch('/productions/:productionId', );
-// Delete Production
-router.delete('/productions/:productionId', );
