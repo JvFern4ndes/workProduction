@@ -24,6 +24,7 @@ import { changeOrderStatus } from './app/useCases/Orders/changeOrderStatus';
 // Client
 import { createClient } from './app/useCases/Clients/createClient';
 import { listClients } from './app/useCases/Clients/listClients';
+import { updateClient } from './app/useCases/Clients/updateClient';
 
 // Item
 import { createItem } from './app/useCases/Items/createItem';
@@ -75,7 +76,7 @@ router.post('/clients', createClient);
 // List clients
 router.get('/clients', listClients);
 // Update clients
-router.patch('/clients/:clientId', );
+router.patch('/clients/:clientId', updateClient);
 
 // Create items
 router.post('/items', upload.single('image'), createItem);
