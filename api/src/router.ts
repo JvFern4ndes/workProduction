@@ -11,6 +11,7 @@ import { listEmployees } from './app/useCases/Employees/listEmployees';
 import { createOrder } from './app/useCases/orders/createOrder';
 import { listOrders } from './app/useCases/orders/listOrders';
 import { deleteOrder } from './app/useCases/orders/deleteOrder';
+import { changeOrderStatus } from './app/useCases/orders/changeOrderStatus';
 
 // Client
 import { createClient } from './app/useCases/Clients/createClient';
@@ -57,7 +58,7 @@ router.post('/orders', createOrder);
 // List orders
 router.get('/orders', listOrders);
 // Update orders
-router.patch('/orders/:orderId', );
+router.patch('/orders/:orderId', changeOrderStatus);
 // Cancel orders
 router.delete('/orders/:orderId', deleteOrder);
 
