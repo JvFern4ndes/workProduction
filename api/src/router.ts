@@ -14,6 +14,7 @@ import { listClients } from './app/useCases/Clients/listClients';
 // Item
 import { createItem } from './app/useCases/Items/createItem';
 import { listItems } from './app/useCases/Items/listItems';
+import { deleteItem } from './app/useCases/Items/deleteItem';
 
 export const router = Router();
 
@@ -69,7 +70,7 @@ router.get('/items', listItems);
 // Update items
 router.patch('items/:itemId', );
 // Delete items
-router.delete('items/:itemId', );
+router.delete('items/:itemId', deleteItem);
 
 // Create Production
 router.post('/productions', );
