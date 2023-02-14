@@ -10,6 +10,7 @@ import { listClients } from './app/useCases/Clients/listClients';
 
 // Item
 import { createItem } from './app/useCases/Items/createItem';
+import { listItems } from './app/useCases/Items/listItems';
 
 export const router = Router();
 
@@ -50,7 +51,7 @@ router.patch('clients/:clientId', );
 // Create items
 router.post('/items', createItem);
 // List items
-router.get('/items', );
+router.get('/items', listItems);
 // Update items
 router.patch('items/:itemId', );
 // Delete items
