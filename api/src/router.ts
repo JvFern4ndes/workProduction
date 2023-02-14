@@ -35,6 +35,7 @@ import { deleteItem } from './app/useCases/Items/deleteItem';
 // Production
 import { createProduction } from './app/useCases/Productions/createProduction';
 import { listProductions } from './app/useCases/Productions/listProductions';
+import { changeProductionPropertiesValues } from './app/useCases/Productions/changeProductionPropertiesValues';
 
 export const router = Router();
 
@@ -97,4 +98,4 @@ router.post('/productions', createProduction);
 // List Production
 router.get('/productions', listProductions);
 // Update Production
-router.patch('/productions/:productionId', );
+router.patch('/productions/:productionId', changeProductionPropertiesValues);
