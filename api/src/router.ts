@@ -8,6 +8,9 @@ import { listEmployees } from './app/useCases/Employees/listEmployees';
 import { createClient } from './app/useCases/Clients/createClient';
 import { listClients } from './app/useCases/Clients/listClients';
 
+// Item
+import { createItem } from './app/useCases/Items/createItem';
+
 export const router = Router();
 
 // Create employees
@@ -45,7 +48,7 @@ router.get('/clients', listClients);
 router.patch('clients/:clientId', );
 
 // Create items
-router.post('/items', );
+router.post('/items', createItem);
 // List items
 router.get('/items', );
 // Update items
