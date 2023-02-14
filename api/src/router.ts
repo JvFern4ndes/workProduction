@@ -6,6 +6,7 @@ import { listEmployees } from './app/useCases/Employees/listEmployees';
 
 // Client
 import { createClient } from './app/useCases/Clients/createClient';
+import { listClients } from './app/useCases/Clients/listClients';
 
 export const router = Router();
 
@@ -39,7 +40,7 @@ router.delete('orders/:orderId', );
 // Create clients
 router.post('/clients', createClient);
 // List clients
-router.get('/clients', );
+router.get('/clients', listClients);
 // Update clients
 router.patch('clients/:clientId', );
 
