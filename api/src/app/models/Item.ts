@@ -7,5 +7,10 @@ export const Item = model('Item', new Schema({
   },
   imagePath: {
     type: String,
-  }
+  },
+  client: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Client',
+  },
 }));
