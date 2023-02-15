@@ -27,3 +27,8 @@ Mongoose is an Object Data Modeling library for MongoDB and Node.js. It manages 
 ## Multer
 This project uses multer to handle image uploads to the database.
 Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency.
+
+## Vite
+The development of the frontend of the project was done using vite.
+Vite is a tool with the aim of creating a simple and super fast development environment. Provides a lean development experience for modern projects.
+
