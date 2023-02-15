@@ -32,3 +32,6 @@ Multer is a node.js middleware for handling multipart/form-data, which is primar
 The development of the frontend of the project was done using vite.
 Vite is a tool with the aim of creating a simple and super fast development environment. Provides a lean development experience for modern projects.
 
+## Styled-components
+The frontend of the project was developed using styled-components.
+Basically, styled components is a library that makes it possible to write CSS code inside JavaScript. With it, you can create beautiful and functional websites. Also, gain more agility and precision in web development.
