@@ -1,6 +1,6 @@
 export interface Order {
   _id: string;
-  status: string;
+  status: 'waiting' | 'in_production' | 'packaging' | 'done';
   details: {
     _id: string;
     amount: number;

@@ -11,14 +11,19 @@ interface OrdersBoardProps {
 
 export function OrdersBoard({ icon, title, orders }: OrdersBoardProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedOrder, setIsSelectedOrder] = useState<null | Order>(null);
 
-  function handleOpenModal() {
+  function handleOpenModal(order: Order) {
     setIsModalVisible(true);
+    setIsSelectedOrder(order);
   }
 
   return (
     <Board>
-      <OrderModal visible={isModalVisible}/>
+      <OrderModal
+        visible={isModalVisible}
+        order={selectedOrder}
+      />
 
       <header>
         <span>{icon}</span>
@@ -29,7 +34,7 @@ export function OrdersBoard({ icon, title, orders }: OrdersBoardProps) {
       {orders.length > 0 && (
         <OrdersContainer>
           {orders.map((order) => (
-            <button type='button' key={order._id} onClick={handleOpenModal}>
+            <button type='button' key={order._id} onClick={() => handleOpenModal(order)}>
               {order.details.map((details) => (
                 <div key={details.item._id}>
                   <strong>{details.item.name}</strong>
