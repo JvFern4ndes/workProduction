@@ -6,10 +6,12 @@ export async function createOrder(req: Request, res: Response) {
   try {
     const {
       details,
+      client,
     } = req.body;
 
     const order = await Order.create({
       details,
+      client,
     });
 
     res.status(201).json(order);

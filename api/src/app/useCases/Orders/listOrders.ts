@@ -6,7 +6,8 @@ export async function listOrders(req: Request, res: Response) {
   try {
     const orders = await Order.find()
       .sort({ createdAt: 1 })
-      .populate('details.item');
+      .populate('details.item')
+      .populate('client');
 
     res.json(orders);
   } catch (error) {

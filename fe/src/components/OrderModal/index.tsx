@@ -65,7 +65,7 @@ export function OrderModal({ visible, order }: OrderModalProps) {
 
               <div className="item-details">
                 <strong>{details.item.name}</strong>
-                <span>{details.item.client}</span>
+                <span>{order.client.name}</span>
               </div>
             </div>
           ))}

@@ -1,6 +1,9 @@
 export interface Order {
   _id: string;
   status: 'waiting' | 'in_production' | 'packaging' | 'done';
+  client: {
+		name: string,
+  }
   details: {
     _id: string;
     amount: number;

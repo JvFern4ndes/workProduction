@@ -6,6 +6,11 @@ export const Order = model('Order', new Schema({
     enum: ['waiting', 'in_production', 'packaging', 'done'],
     default: 'waiting',
   },
+  client: {
+    type: String,
+    required: true,
+    ref: 'Client',
+  },
   details: {
     required: true,
     type: [{
