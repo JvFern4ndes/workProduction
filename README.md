@@ -35,3 +35,7 @@ Vite is a tool with the aim of creating a simple and super fast development envi
 ## Styled-components
 The frontend of the project was developed using styled-components.
 Basically, styled components is a library that makes it possible to write CSS code inside JavaScript. With it, you can create beautiful and functional websites. Also, gain more agility and precision in web development.
+
+## Expo
+The project's mobile was built with the Expo tool.
+It's a set of tools and services built around native and React Native platforms that help you quickly develop, build, deploy, and iterate on iOS, Android, and web apps from the same JavaScript/TypeScript.
