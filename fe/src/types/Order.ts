@@ -2,6 +2,7 @@ export interface Order {
   _id: string;
   status: 'waiting' | 'in_production' | 'packaging' | 'done';
   client: {
+    _id: string,
 		name: string,
   }
   details: {

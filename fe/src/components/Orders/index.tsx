@@ -7,7 +7,8 @@ const orders: Order[] = [
     '_id': '63eb80fc7868e22b1fc669d0',
     'status': 'waiting',
     'client': {
-      'name': 'safecar',
+      '_id': '63eb5d551a09515da6f09a82',
+      'name': 'Safecar',
     },
     'details': [
       {
