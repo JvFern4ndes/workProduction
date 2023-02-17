@@ -10,6 +10,7 @@ import { Header } from '../components/Header';
 import { Orders } from '../components/Orders';
 import { Status } from '../components/Status';
 import { Button } from '../components/Button';
+import { MachineModal } from '../components/MachineModal';
 
 export function Main() {
   return (
@@ -33,6 +34,8 @@ export function Main() {
           </Button>
         </FooterContainer>
       </Footer>
+
+
     </>
   );
 }

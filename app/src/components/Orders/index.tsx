@@ -1,4 +1,4 @@
-import { FlatList, TouchableOpacity } from 'react-native';
+import { FlatList } from 'react-native';
 
 import { orders } from '../../mocks/orders';
 import { PlusCircle } from '../Icons/PlusCircle';
