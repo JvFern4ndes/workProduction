@@ -6,12 +6,11 @@ const isAndroid = Platform.OS === 'android';
 export const Container = styled.SafeAreaView`
   margin-top: ${isAndroid ? `${StatusBar.currentHeight}px` : '0'};
   flex: 1;
-  background: #666;
+  background: #fafafa;
 `;
 
 export const StatusContainer = styled.View`
-  height: 73px;
-  background: red;
+  height: 89px;
 `;
 
 export const OrdersContainer = styled.View`

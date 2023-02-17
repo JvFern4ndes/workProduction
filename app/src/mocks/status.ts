@@ -4,12 +4,16 @@ export const status = [
     icon: '🔴️',
   },
   {
-    name: 'Em produção',
+    name: 'Preparando',
     icon: '🟠️',
   },
   {
-    name: 'Embalagem',
+    name: 'Em produção',
     icon: '🟡️',
+  },
+  {
+    name: 'Embalagem',
+    icon: '🔵️',
   },
   {
     name: 'Pedido pronto',

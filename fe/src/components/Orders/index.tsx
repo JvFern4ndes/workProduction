@@ -6,7 +6,7 @@ import { Container } from './styles';
 const orders: Order[] = [
   {
     '_id': '63eb80fc7868e22b1fc669d0',
-    'status': 'in_production',
+    'status': 'waiting',
     'client': {
       '_id': '63eb5d551a09515da6f09a82',
       'name': 'Safecar',
@@ -79,12 +79,18 @@ export function Orders() {
       />
       <OrdersBoard
         icon="🟠️"
-        title="Em produção"
+        title="Preparando"
         orders={[]}
         productions={[]}
       />
       <OrdersBoard
         icon="🟡️"
+        title="Em produção"
+        orders={[]}
+        productions={[]}
+      />
+      <OrdersBoard
+        icon="🔵️"
         title="Embalagem"
         orders={[]}
         productions={[]}
