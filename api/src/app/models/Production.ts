@@ -34,4 +34,8 @@ export const Production = model('Production', new Schema({
     type: Date,
     default: Date.now,
   },
+  finishedAt: {
+    type: Date,
+    default: Date.now,
+  }
 }));
