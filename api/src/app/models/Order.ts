@@ -7,7 +7,7 @@ export const Order = model('Order', new Schema({
     default: 'waiting',
   },
   client: {
-    type: String,
+    type: Schema.Types.ObjectId,
     required: true,
     ref: 'Client',
   },
