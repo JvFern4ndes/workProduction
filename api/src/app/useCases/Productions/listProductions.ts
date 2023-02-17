@@ -8,8 +8,7 @@ export async function listProductions(req: Request, res: Response) {
       .sort({ createdAt: 1 })
       .populate('details.employee')
       .populate('details.machine')
-      .populate('details.order')
-      .populate('details.order.client.name');
+      .populate('details.order');
 
     res.json(productions);
   } catch (error) {

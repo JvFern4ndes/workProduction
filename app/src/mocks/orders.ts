@@ -30,4 +30,35 @@ export const orders = [
       }
     ],
   },
+  {
+    '_id': '63ef9e75c83d2c8683cf765c',
+    'status': 'waiting',
+    'client': {
+      '_id': '63eb983f9864bb507205707d',
+      'name': 'metal brasil',
+    },
+    'details': [
+      {
+        'item': {
+          '_id': '63eb65bd7be6c49775cf5a2b',
+          'name': '500',
+          'imagePath': '1676371389994-item1.jpeg',
+          'measures': [
+            {
+              'name': 'Measure A',
+              'value': 1,
+            },
+            {
+              'name': 'Measure B',
+              'value': 2,
+            }
+          ],
+          'client': '63eb3014664f35c90a51d2c7',
+        },
+        'amount': 500,
+        'deliveryDate': '2001-02-01T02:00:00.000Z',
+        '_id': '63ef9e75c83d2c8683cf765d'
+      }
+    ],
+  },
 ];

@@ -22,7 +22,7 @@ export function Status() {
       data={status}
       contentContainerStyle={{ paddingRight: 24 }}
       keyExtractor={status => status.name}
-      renderItem={({ item: status }) => {
+      renderItem={({ item: status  }) => {
         const isSelected = selectedStatus === status.name;
 
         return (

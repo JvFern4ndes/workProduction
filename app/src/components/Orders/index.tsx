@@ -1,9 +1,17 @@
-import { FlatList } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 
 import { orders } from '../../mocks/orders';
+import { PlusCircle } from '../Icons/PlusCircle';
 import { Text } from '../Text';
 
-import { Order, Image, OrderDetails, OrderInfos } from './styles';
+import {
+  Order,
+  OrderImage,
+  OrderDetails,
+  OrderInfos,
+  Separator,
+  StartProductionButton
+} from './styles';
 
 export function Orders() {
   return (
@@ -12,10 +20,11 @@ export function Orders() {
       style={{ marginTop: 32 }}
       contentContainerStyle={{ paddingHorizontal: 24 }}
       keyExtractor={order => order._id}
+      ItemSeparatorComponent={Separator}
       renderItem={({ item: order }) => (
         <Order>
           {order.details.map((details) => (
-            <Image key={details._id}
+            <OrderImage key={details._id}
               source={{
                 uri: `http://192.168.15.10:3001/uploads/${details.item.imagePath}`
               }}
@@ -25,18 +34,22 @@ export function Orders() {
           <OrderDetails>
             {order.details.map((detail) => (
               <OrderInfos key={detail._id}>
-                <Text>
+                <Text weight='600'>
                   {detail?.item?.name}
                 </Text>
-                <Text>
+                <Text size={14} color="#666" style={{ marginVertical: 8 }}>
                   {order.client.name}
                 </Text>
-                <Text>
-                  {detail.amount}
+                <Text size={14} weight="600">
+                  {detail.amount} itens
                 </Text>
               </OrderInfos>
             ))}
           </OrderDetails>
+
+          <StartProductionButton>
+            <PlusCircle />
+          </StartProductionButton>
         </Order>
       )}
     />
