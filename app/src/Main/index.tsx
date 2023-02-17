@@ -3,12 +3,13 @@ import {
   StatusContainer,
   OrdersContainer,
   Footer,
-  FooterContainer
+  FooterContainer,
 } from './styles';
 
 import { Header } from '../components/Header';
 import { Orders } from '../components/Orders';
 import { Status } from '../components/Status';
+import { Button } from '../components/Button';
 
 export function Main() {
   return (
@@ -26,7 +27,11 @@ export function Main() {
       </Container>
 
       <Footer>
-        <FooterContainer></FooterContainer>
+        <FooterContainer>
+          <Button onPress={() => alert('Novo pedido')} disabled>
+            Iniciar Produção
+          </Button>
+        </FooterContainer>
       </Footer>
     </>
   );
