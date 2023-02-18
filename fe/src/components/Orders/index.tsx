@@ -78,7 +78,7 @@ export function Orders() {
         productions={productions}
       />
       <OrdersBoard
-        icon="🟠️"
+        icon="🔧️"
         title="Preparando"
         orders={[]}
         productions={[]}
@@ -90,7 +90,7 @@ export function Orders() {
         productions={[]}
       />
       <OrdersBoard
-        icon="🔵️"
+        icon="📦️"
         title="Embalagem"
         orders={[]}
         productions={[]}

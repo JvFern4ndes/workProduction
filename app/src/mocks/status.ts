@@ -5,7 +5,7 @@ export const status = [
   },
   {
     name: 'Preparando',
-    icon: '🟠️',
+    icon: '🔧️',
   },
   {
     name: 'Em produção',
@@ -13,7 +13,7 @@ export const status = [
   },
   {
     name: 'Embalagem',
-    icon: '🔵️',
+    icon: '📦️',
   },
   {
     name: 'Pedido pronto',

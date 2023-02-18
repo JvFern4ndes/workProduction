@@ -11,8 +11,16 @@ import { Orders } from '../components/Orders';
 import { Status } from '../components/Status';
 import { Button } from '../components/Button';
 import { MachineModal } from '../components/MachineModal';
+import { useState } from 'react';
 
 export function Main() {
+  const [isMachineModalVisible, setIsMachineModalVisible] = useState(false);
+  const [selectedMachine, setSelectedMachine] = useState('');
+
+  function handleSaveMachine(machine: string) {
+    setSelectedMachine(machine);
+  }
+
   return (
     <>
       <Container>
@@ -29,13 +37,19 @@ export function Main() {
 
       <Footer>
         <FooterContainer>
-          <Button onPress={() => alert('Novo pedido')} disabled>
-            Iniciar Produção
-          </Button>
+          {!selectedMachine && (
+            <Button onPress={() => setIsMachineModalVisible(true)}>
+              Iniciar Produção
+            </Button>
+          )}
         </FooterContainer>
       </Footer>
 
-
+      <MachineModal
+        visible={isMachineModalVisible}
+        onClose={() => setIsMachineModalVisible(false)}
+        onSave={handleSaveMachine}
+      />
     </>
   );
 }

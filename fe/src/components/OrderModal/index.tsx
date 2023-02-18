@@ -50,8 +50,9 @@ export function OrderModal({ visible, order, onClose }: OrderModalProps) {
           <div>
             <span>
               {order.status === 'waiting' && '🔴️'}
+              {order.status === 'preparing' && '🔧️'}
               {order.status === 'in_production' && '🟠️'}
-              {order.status === 'packaging' && '🟡️'}
+              {order.status === 'packaging' && '📦️'}
               {order.status === 'done' && '🟢️'}
             </span>
             <strong>
