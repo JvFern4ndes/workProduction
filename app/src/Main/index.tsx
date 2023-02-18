@@ -21,10 +21,17 @@ export function Main() {
     setSelectedMachine(machine);
   }
 
+  function handleCancelOrder() {
+    setSelectedMachine('');
+  }
+
   return (
     <>
       <Container>
-        <Header />
+        <Header
+          selectedMachine={selectedMachine}
+          onCancelOrder={handleCancelOrder}
+        />
 
         <StatusContainer>
           <Status />

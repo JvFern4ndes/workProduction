@@ -23,6 +23,7 @@ export function MachineModal({ visible, onClose, onSave }: MachineModalProps) {
   const [machine, setMachine] = useState('');
 
   function handleConfirm() {
+    setMachine('');
     onSave(machine);
     onClose();
   }
