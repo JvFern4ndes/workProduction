@@ -24,6 +24,8 @@ export const ModalBody = styled.View`
 
 export const Header = styled.View``;
 
+export const MeasureText = styled.View``;
+
 export const MeasuresContainer = styled.View`
   margin-top: 32px;
   flex: 1;

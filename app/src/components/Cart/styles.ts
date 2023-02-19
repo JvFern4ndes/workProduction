@@ -27,3 +27,14 @@ export const AmountContainer = styled.View`
 `;
 
 export const OrderDetails = styled.View``;
+
+export const Summary = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const StartContainer = styled.View`
+  margin-right: 80px;
+  flex: 1;
+`;

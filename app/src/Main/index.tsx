@@ -15,46 +15,12 @@ import { Button } from '../components/Button';
 import { MachineModal } from '../components/MachineModal';
 import { Cart } from '../components/Cart';
 import { CartItem } from '../types/CartItem';
-import { orders } from '../mocks/orders';
+import { Order } from '../types/Order';
 
 export function Main() {
   const [isMachineModalVisible, setIsMachineModalVisible] = useState(false);
   const [selectedMachine, setSelectedMachine] = useState('');
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      order: {
-        '_id': '63eb80fc7868e22b1fc669d0',
-        'status': 'waiting',
-        'client': {
-          '_id': '63eb5d551a09515da6f09a82',
-          'name': 'Safecar',
-        },
-        'details': [
-          {
-            'item': {
-              '_id': '63eb5d371a09515da6f09a75',
-              'name': '161-001',
-              'imagePath': '1676371389994-item1.jpeg',
-              'measures': [
-                {
-                  'name': 'Medida A:',
-                  'value': 12.20,
-                },
-                {
-                  'name': 'Medida B',
-                  'value': 24.90,
-                }
-              ],
-              'client': '63eb3014664f35c90a51d2c7',
-            },
-            'amount': 100,
-            'deliveryDate': '2001-02-01T02:00:00.000Z',
-            '_id': '63eb80fc7868e22b1fc669d1'
-          }
-        ],
-      },
-    },
-  ]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   function handleSaveMachine(machine: string) {
     setSelectedMachine(machine);
@@ -62,6 +28,10 @@ export function Main() {
 
   function handleCancelOrder() {
     setSelectedMachine('');
+  }
+
+  function handleAddToCart(order: Order) {
+    alert(order._id);
   }
 
   return (
@@ -77,7 +47,7 @@ export function Main() {
         </StatusContainer>
 
         <OrdersContainer>
-          <Orders />
+          <Orders onAddToCart={handleAddToCart} />
         </OrdersContainer>
       </Container>
 

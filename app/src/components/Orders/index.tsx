@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { FlatList } from 'react-native';
 
-import { orders } from '../../mocks/orders';
 import { Order } from '../../types/Order';
+import { orders } from '../../mocks/orders';
+
 import { PlusCircle } from '../Icons/PlusCircle';
 import { OrderModal } from '../OrderModal';
 import { Text } from '../Text';
@@ -16,7 +17,11 @@ import {
   StartProductionButton
 } from './styles';
 
-export function Orders() {
+interface OrdersProps {
+  onAddToCart: (order: Order) => void;
+}
+
+export function Orders({ onAddToCart }: OrdersProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState<null | Order>(null);
 
@@ -31,6 +36,7 @@ export function Orders() {
         visible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
         order={selectedOrder}
+        onAddToCart={onAddToCart}
       />
 
       <FlatList
@@ -65,7 +71,7 @@ export function Orders() {
               ))}
             </OrderDetails>
 
-            <StartProductionButton>
+            <StartProductionButton onPress={() => onAddToCart(order)}>
               <PlusCircle />
             </StartProductionButton>
           </OrderContainer>

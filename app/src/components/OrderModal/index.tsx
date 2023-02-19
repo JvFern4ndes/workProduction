@@ -20,11 +20,17 @@ interface OrderModalProps {
   visible: boolean;
   onClose: () => void;
   order: null | Order;
+  onAddToCart: (order: Order) => void;
 }
 
-export function OrderModal({ visible, onClose, order }: OrderModalProps) {
+export function OrderModal({ visible, onClose, order, onAddToCart }: OrderModalProps) {
   if (!order) {
     return null;
+  }
+
+  function handleAddToCart() {
+    onAddToCart(order!);
+    onClose();
   }
 
   return(
@@ -56,26 +62,30 @@ export function OrderModal({ visible, onClose, order }: OrderModalProps) {
           <Text color='#666' style={{ marginTop: 8 }}>{order.client.name}</Text>
         </Header>
 
-        <MeasuresContainer>
-          <Text weight='600' color='#666'>Medidas</Text>
+        {order.details.map((details) => (
+          <MeasuresContainer key={details._id}>
+            {details.item.measures && (
+              <>
+                <Text weight='600' color='#666'>Medidas</Text>
 
-          {order.details.map((details) => (
-            <FlatList key={details._id}
-              data={details.item.measures}
-              keyExtractor={measures => measures.name}
-              showsVerticalScrollIndicator={false}
-              style={{ marginTop: 16 }}
-              renderItem={({ item: measure }) => (
-                <Measures>
-                  <Text>{measure.name}</Text>
-                  <Text size={14} color="#666" style={{ marginLeft: 20 }}>
-                    {measure.value}
-                  </Text>
-                </Measures>
-              )}
-            />
-          ))}
-        </MeasuresContainer>
+                <FlatList
+                  data={details.item.measures}
+                  keyExtractor={measures => measures.name}
+                  showsVerticalScrollIndicator={false}
+                  style={{ marginTop: 16 }}
+                  renderItem={({ item: measure }) => (
+                    <Measures>
+                      <Text>{measure.name}</Text>
+                      <Text size={14} color="#666" style={{ marginLeft: 20 }}>
+                        {measure.value}
+                      </Text>
+                    </Measures>
+                  )}
+                />
+              </>
+            )}
+          </MeasuresContainer>
+        ))}
       </ModalBody>
 
       <Footer>
@@ -90,7 +100,9 @@ export function OrderModal({ visible, onClose, order }: OrderModalProps) {
             ))}
           </QuantityContainer>
 
-          <Button onPress={() => alert('Iniciar Etapa')}>Iniciar etapa</Button>
+          <Button onPress={handleAddToCart}>
+            Iniciar etapa
+          </Button>
         </FooterContainer>
       </Footer>
     </Modal>
