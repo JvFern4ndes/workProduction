@@ -24,14 +24,12 @@ export const ModalBody = styled.View`
 
 export const Header = styled.View``;
 
-export const MeasuresContainer = styled.View``;
-
-export const Measures = styled.View`
+export const MeasuresContainer = styled.View`
   margin-top: 32px;
   flex: 1;
 `;
 
-export const MeasuresInfos = styled.View`
+export const Measures = styled.View`
   border: 1px solid rgba(204, 204, 204, 0.3);
   border-radius: 8px;
   padding: 16px;

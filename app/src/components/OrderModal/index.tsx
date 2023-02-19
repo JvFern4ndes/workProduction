@@ -11,7 +11,6 @@ import {
   ModalBody,
   MeasuresContainer,
   Measures,
-  MeasuresInfos,
   Footer,
   FooterContainer,
   QuantityContainer,
@@ -57,7 +56,7 @@ export function OrderModal({ visible, onClose, order }: OrderModalProps) {
           <Text color='#666' style={{ marginTop: 8 }}>{order.client.name}</Text>
         </Header>
 
-        <Measures>
+        <MeasuresContainer>
           <Text weight='600' color='#666'>Medidas</Text>
 
           {order.details.map((details) => (
@@ -67,16 +66,16 @@ export function OrderModal({ visible, onClose, order }: OrderModalProps) {
               showsVerticalScrollIndicator={false}
               style={{ marginTop: 16 }}
               renderItem={({ item: measure }) => (
-                <MeasuresInfos>
+                <Measures>
                   <Text>{measure.name}</Text>
                   <Text size={14} color="#666" style={{ marginLeft: 20 }}>
                     {measure.value}
                   </Text>
-                </MeasuresInfos>
+                </Measures>
               )}
             />
           ))}
-        </Measures>
+        </MeasuresContainer>
       </ModalBody>
 
       <Footer>
