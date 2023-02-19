@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import { FlatList } from 'react-native';
 
 import { orders } from '../../mocks/orders';
+import { Order } from '../../types/Order';
 import { PlusCircle } from '../Icons/PlusCircle';
+import { OrderModal } from '../OrderModal';
 import { Text } from '../Text';
 
 import {
-  Order,
+  OrderContainer,
   OrderImage,
   OrderDetails,
   OrderInfos,
@@ -14,44 +17,60 @@ import {
 } from './styles';
 
 export function Orders() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState<null | Order>(null);
+
+  function handleOpenModal(order: Order) {
+    setIsModalVisible(true);
+    setSelectedOrder(order);
+  }
+
   return (
-    <FlatList
-      data={orders}
-      style={{ marginTop: 32 }}
-      contentContainerStyle={{ paddingHorizontal: 24 }}
-      keyExtractor={order => order._id}
-      ItemSeparatorComponent={Separator}
-      renderItem={({ item: order }) => (
-        <Order>
-          {order.details.map((details) => (
-            <OrderImage key={details._id}
-              source={{
-                uri: `http://192.168.15.10:3001/uploads/${details.item.imagePath}`
-              }}
-            />
-          ))}
+    <>
+      <OrderModal
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        order={selectedOrder}
+      />
 
-          <OrderDetails>
-            {order.details.map((detail) => (
-              <OrderInfos key={detail._id}>
-                <Text weight='600'>
-                  {detail?.item?.name}
-                </Text>
-                <Text size={14} color="#666" style={{ marginVertical: 8 }}>
-                  {order.client.name}
-                </Text>
-                <Text size={14} weight="600">
-                  {detail.amount} itens
-                </Text>
-              </OrderInfos>
+      <FlatList
+        data={orders}
+        style={{ marginTop: 32 }}
+        contentContainerStyle={{ paddingHorizontal: 24 }}
+        keyExtractor={order => order._id}
+        ItemSeparatorComponent={Separator}
+        renderItem={({ item: order }) => (
+          <OrderContainer onPress={() => handleOpenModal(order)}>
+            {order.details.map((details) => (
+              <OrderImage key={details._id}
+                source={{
+                  uri: `http://192.168.15.10:3001/uploads/${details.item.imagePath}`
+                }}
+              />
             ))}
-          </OrderDetails>
 
-          <StartProductionButton>
-            <PlusCircle />
-          </StartProductionButton>
-        </Order>
-      )}
-    />
+            <OrderDetails>
+              {order.details.map((detail) => (
+                <OrderInfos key={detail._id}>
+                  <Text weight='600'>
+                    {detail?.item?.name}
+                  </Text>
+                  <Text size={14} color="#666" style={{ marginVertical: 8 }}>
+                    {order.client.name}
+                  </Text>
+                  <Text size={14} weight="600">
+                    {detail.amount} itens
+                  </Text>
+                </OrderInfos>
+              ))}
+            </OrderDetails>
+
+            <StartProductionButton>
+              <PlusCircle />
+            </StartProductionButton>
+          </OrderContainer>
+        )}
+      />
+    </>
   );
 }
