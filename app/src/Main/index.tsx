@@ -28,10 +28,54 @@ export function Main() {
 
   function handleCancelOrder() {
     setSelectedMachine('');
+    setCartItems([]);
   }
 
   function handleAddToCart(order: Order) {
-    alert(order._id);
+    if (!selectedMachine) {
+      setIsMachineModalVisible(true);
+    }
+
+    setCartItems((prevState) => {
+      const itemIndex = prevState.findIndex(
+        cartItem => cartItem.order._id === order._id
+      );
+
+      if (itemIndex < 0) {
+        return prevState.concat({
+          order,
+        });
+      }
+
+      const newCartItems = [...prevState];
+      const item = newCartItems[itemIndex];
+
+      newCartItems[itemIndex] = {
+        ...item,
+        order,
+      };
+
+      return newCartItems;
+    });
+  }
+
+  function handleDecrementCartItem(order: Order) {
+    setCartItems((prevState) => {
+      const itemIndex = prevState.findIndex(
+        cartItem => cartItem.order._id === order._id
+      );
+
+      const item = prevState[itemIndex];
+      const newCartItems = [...prevState];
+
+      if (item.order) {
+        newCartItems.splice(itemIndex, 1);
+
+        return newCartItems;
+      }
+
+      return newCartItems;
+    });
   }
 
   return (
@@ -60,7 +104,10 @@ export function Main() {
           )}
 
           {selectedMachine && (
-            <Cart cartItems={cartItems} />
+            <Cart
+              cartItems={cartItems}
+              onDecrement={handleDecrementCartItem}
+            />
           )}
         </FooterContainer>
       </Footer>
