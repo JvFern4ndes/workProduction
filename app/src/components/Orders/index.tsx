@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { FlatList } from 'react-native';
 
 import { Order } from '../../types/Order';
-import { orders } from '../../mocks/orders';
 
 import { PlusCircle } from '../Icons/PlusCircle';
 import { OrderModal } from '../OrderModal';
@@ -19,9 +18,10 @@ import {
 
 interface OrdersProps {
   onAddToCart: (order: Order) => void;
+  orders: Order[];
 }
 
-export function Orders({ onAddToCart }: OrdersProps) {
+export function Orders({ onAddToCart, orders }: OrdersProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState<null | Order>(null);
 
