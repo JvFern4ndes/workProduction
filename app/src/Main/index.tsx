@@ -26,7 +26,7 @@ export function Main() {
     setSelectedMachine(machine);
   }
 
-  function handleCancelOrder() {
+  function handleResetOrder() {
     setSelectedMachine('');
     setCartItems([]);
   }
@@ -83,7 +83,7 @@ export function Main() {
       <Container>
         <Header
           selectedMachine={selectedMachine}
-          onCancelOrder={handleCancelOrder}
+          onCancelOrder={handleResetOrder}
         />
 
         <StatusContainer>
@@ -107,6 +107,7 @@ export function Main() {
             <Cart
               cartItems={cartItems}
               onDecrement={handleDecrementCartItem}
+              onConfirmProduction={handleResetOrder}
             />
           )}
         </FooterContainer>

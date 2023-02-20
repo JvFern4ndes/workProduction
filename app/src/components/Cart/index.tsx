@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
 import { CartItem } from '../../types/CartItem';
 import { Order } from '../../types/Order';
 import { Button } from '../Button';
 import { MinusCircle } from '../Icons/MinusCircle';
+import { ProductionConfirmedModal } from '../ProductionConfirmedModal';
 import { Text } from '../Text';
 
 import {
@@ -19,11 +21,28 @@ import {
 interface CartProps {
   cartItems: CartItem[];
   onDecrement: (order: Order) => void;
+  onConfirmProduction: () => void;
 }
 
-export function Cart({ cartItems, onDecrement }: CartProps) {
+export function Cart({ cartItems, onDecrement, onConfirmProduction }: CartProps) {
+  const [isProductionConfirmedModalVisible, setIsProductionConfirmedModalVisible] = useState(false);
+
+  function handleConfirmProduction() {
+    setIsProductionConfirmedModalVisible(true);
+  }
+
+  function handleOk() {
+    onConfirmProduction();
+    setIsProductionConfirmedModalVisible(false);
+  }
+
   return (
     <>
+      <ProductionConfirmedModal
+        visible={isProductionConfirmedModalVisible}
+        onOk={handleOk}
+      />
+
       {cartItems.length > 0 && (
         <FlatList
           data={cartItems}
@@ -82,10 +101,10 @@ export function Cart({ cartItems, onDecrement }: CartProps) {
         </StartContainer>
 
         <Button
-          onPress={() => alert('Iniciar Produção')}
+          onPress={handleConfirmProduction}
           disabled={cartItems.length === 0}
         >
-          ✔️
+          Sim
         </Button>
       </Summary>
     </>
