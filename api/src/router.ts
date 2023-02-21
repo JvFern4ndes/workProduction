@@ -20,6 +20,7 @@ import { createOrder } from './app/useCases/Orders/createOrder';
 import { listOrders } from './app/useCases/Orders/listOrders';
 import { cancelOrder } from './app/useCases/Orders/cancelOrder';
 import { changeOrderStatus } from './app/useCases/Orders/changeOrderStatus';
+import { listOrdersByStatus } from './app/useCases/Orders/listOrdersByStatus';
 
 // Client
 import { createClient } from './app/useCases/Clients/createClient';
@@ -78,6 +79,8 @@ router.delete('/machines/:machineId', deleteMachine);
 router.post('/orders', createOrder);
 // List orders
 router.get('/orders', listOrders);
+//List orders by status
+router.get('/status/:statusId/orders', listOrdersByStatus);
 // Update orders
 router.patch('/orders/:orderId', changeOrderStatus);
 // Cancel orders

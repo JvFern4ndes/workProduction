@@ -33,6 +33,7 @@ export function Main() {
   const [isLoading, setIsLoading] = useState(true);
   const [status, setStatus] = useState<StatusType[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
+  const [isLoadingOrders, setIsLoadingOrders] = useState(false);
 
   useEffect(() => {
     Promise.all([
@@ -44,6 +45,20 @@ export function Main() {
       setIsLoading(false);
     });
   }, []);
+
+  async function handleSelectStatus(statusId: string) {
+    const route = !statusId
+      ? '/orders'
+      : `/status/${statusId}/orders`;
+
+    setIsLoadingOrders(true);
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    const { data } = await api.get(route);
+
+    setOrders(data);
+    setIsLoadingOrders(false);
+  }
 
   function handleSaveMachine(machine: string) {
     setSelectedMachine(machine);
@@ -121,24 +136,33 @@ export function Main() {
             <StatusContainer>
               <Status
                 status={status}
+                onSelectStatus={handleSelectStatus}
               />
             </StatusContainer>
 
-            {orders.length > 0 ? (
-              <OrdersContainer>
-                <Orders
-                  onAddToCart={handleAddToCart}
-                  orders={orders}
-                />
-              </OrdersContainer>
-            ) : (
+            {isLoadingOrders ? (
               <CenteredContainer>
-                <Entypo name="block" size={120} color="#000" />
-
-                <Text color='#666' style={{ marginTop: 24 }}>
-                  Nenhum pedido foi encontrado!
-                </Text>
+                <ActivityIndicator  color="#000" size="large" />
               </CenteredContainer>
+            ) : (
+              <>
+                {orders.length > 0 ? (
+                  <OrdersContainer>
+                    <Orders
+                      onAddToCart={handleAddToCart}
+                      orders={orders}
+                    />
+                  </OrdersContainer>
+                ) : (
+                  <CenteredContainer>
+                    <Entypo name="block" size={120} color="#000" />
+
+                    <Text color='#666' style={{ marginTop: 24 }}>
+                      Nenhum pedido foi encontrado!
+                    </Text>
+                  </CenteredContainer>
+                )}
+              </>
             )}
           </>
         )}

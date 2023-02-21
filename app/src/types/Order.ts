@@ -1,6 +1,10 @@
 export interface Order {
   _id: string;
-  status: string;
+  status: {
+    _id: string;
+    icon: string;
+    name: string;
+  },
   client: {
       _id: string;
       name: string;

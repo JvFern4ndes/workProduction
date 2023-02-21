@@ -8,14 +8,16 @@ import { StatusContainer, Icon } from './styles';
 
 interface StatusProps {
   status: StatusType[];
+  onSelectStatus: (statusId: string) => void;
 }
 
-export function Status({ status }: StatusProps) {
+export function Status({ status, onSelectStatus }: StatusProps) {
   const [selectedStatus, setSelectedStatus] = useState('');
 
-  function handleSelectStatus(statusName: string) {
-    const status = selectedStatus === statusName ? '' : statusName;
+  function handleSelectStatus(statusId: string) {
+    const status = selectedStatus === statusId ? '' : statusId;
 
+    onSelectStatus(status);
     setSelectedStatus(status);
   }
 
@@ -25,12 +27,12 @@ export function Status({ status }: StatusProps) {
       showsHorizontalScrollIndicator={false}
       data={status}
       contentContainerStyle={{ paddingRight: 24 }}
-      keyExtractor={status => status.name}
+      keyExtractor={status => status._id}
       renderItem={({ item: status  }) => {
-        const isSelected = selectedStatus === status.name;
+        const isSelected = selectedStatus === status._id;
 
         return (
-          <StatusContainer key={status.name} onPress={() => handleSelectStatus(status.name)}>
+          <StatusContainer key={status._id} onPress={() => handleSelectStatus(status._id)}>
             <Icon>
               <Text opacity={isSelected ? 1 : 0.5}>
                 {status.icon}
