@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 
 const isAndroid = Platform.OS === 'android';
 
-export const StatusStyle = styled.TouchableOpacity`
+export const StatusContainer = styled.TouchableOpacity`
   margin-top: 32px;
   align-items: center;
   margin-left: 24px;

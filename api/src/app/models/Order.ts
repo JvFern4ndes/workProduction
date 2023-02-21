@@ -2,9 +2,9 @@ import { model, Schema } from 'mongoose';
 
 export const Order = model('Order', new Schema({
   status: {
-    type: String,
-    enum: ['waiting', 'in_production', 'packaging', 'done'],
-    default: 'waiting',
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Status',
   },
   client: {
     type: Schema.Types.ObjectId,

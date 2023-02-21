@@ -1,5 +1,5 @@
 import { ActivityIndicator } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
   Container,
@@ -20,19 +20,34 @@ import { Cart } from '../components/Cart';
 import { CartItem } from '../types/CartItem';
 import { Order } from '../types/Order';
 
-import { orders as mockOrders } from '../mocks/orders';
 import { Text } from '../components/Text';
 import { Entypo,  } from '@expo/vector-icons';
+import { StatusType } from '../types/StatusType';
+
+import { api } from '../utils/api';
 
 export function Main() {
   const [isMachineModalVisible, setIsMachineModalVisible] = useState(false);
   const [selectedMachine, setSelectedMachine] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isLoading] = useState(false);
-  const [orders] = useState<Order[]>(mockOrders);
+  const [isLoading, setIsLoading] = useState(true);
+  const [status, setStatus] = useState<StatusType[]>([]);
+  const [orders, setOrders] = useState<Order[]>([]);
+
+  useEffect(() => {
+    Promise.all([
+      api.get('/status'),
+      api.get('/orders'),
+    ]).then(([statusResponse, ordersResponse]) => {
+      setStatus(statusResponse.data);
+      setOrders(ordersResponse.data);
+      setIsLoading(false);
+    });
+  }, []);
 
   function handleSaveMachine(machine: string) {
     setSelectedMachine(machine);
+    setIsMachineModalVisible(false);
   }
 
   function handleResetOrder() {
@@ -104,7 +119,9 @@ export function Main() {
         {!isLoading && (
           <>
             <StatusContainer>
-              <Status />
+              <Status
+                status={status}
+              />
             </StatusContainer>
 
             {orders.length > 0 ? (

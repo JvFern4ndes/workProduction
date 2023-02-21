@@ -104,7 +104,7 @@ export function Cart({ cartItems, onDecrement, onConfirmProduction }: CartProps)
         <Button
           onPress={handleConfirmProduction}
           disabled={cartItems.length === 0}
-          loading={true}
+          loading={isLoading}
         >
           Sim
         </Button>

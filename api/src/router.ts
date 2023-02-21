@@ -37,6 +37,12 @@ import { createProduction } from './app/useCases/Productions/createProduction';
 import { listProductions } from './app/useCases/Productions/listProductions';
 import { changeProductionPropertiesValues } from './app/useCases/Productions/changeProductionPropertiesValues';
 
+// Status
+import { createStatus } from './app/useCases/Status/createStatus';
+import { listStatus } from './app/useCases/Status/listStatus';
+import { updateStatus } from './app/useCases/Status/updateStatus';
+import { deleteStatus } from './app/useCases/Status/deleteStatus';
+
 export const router = Router();
 
 const upload = multer({
@@ -99,3 +105,12 @@ router.post('/productions', createProduction);
 router.get('/productions', listProductions);
 // Update Production
 router.patch('/productions/:productionId', changeProductionPropertiesValues);
+
+// Create Status
+router.post('/status', createStatus);
+// List Status
+router.get('/status', listStatus);
+// Update Status
+router.patch('/status/:statusId', updateStatus);
+// Delete Status
+router.delete('/status/:statusId', deleteStatus);

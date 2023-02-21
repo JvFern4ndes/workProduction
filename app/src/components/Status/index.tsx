@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { FlatList } from 'react-native';
 
-import { status } from '../../mocks/status';
+import { StatusType } from '../../types/StatusType';
 import { Text } from '../Text';
 
-import { StatusStyle, Icon } from './styles';
+import { StatusContainer, Icon } from './styles';
 
-export function Status() {
+interface StatusProps {
+  status: StatusType[];
+}
+
+export function Status({ status }: StatusProps) {
   const [selectedStatus, setSelectedStatus] = useState('');
 
   function handleSelectStatus(statusName: string) {
@@ -26,7 +30,7 @@ export function Status() {
         const isSelected = selectedStatus === status.name;
 
         return (
-          <StatusStyle key={status.name} onPress={() => handleSelectStatus(status.name)}>
+          <StatusContainer key={status.name} onPress={() => handleSelectStatus(status.name)}>
             <Icon>
               <Text opacity={isSelected ? 1 : 0.5}>
                 {status.icon}
@@ -36,7 +40,7 @@ export function Status() {
             <Text size={14} weight="600" opacity={isSelected ? 1 : 0.5}>
               {status.name}
             </Text>
-          </StatusStyle>
+          </StatusContainer>
         );
       }}
     />
