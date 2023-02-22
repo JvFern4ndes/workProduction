@@ -15,11 +15,21 @@ export const OrderHeader = styled.View`
   justify-content: space-between;
 `;
 
+export const ProductionOptionsHeader = styled.View``;
+
 export const MachineContainer = styled.View`
   padding: 24px;
 `;
 
 export const Machine = styled.View`
+  padding: 16px;
+  background: #fff;
+  border: 1px solid rgba(204, 204, 204, 0.3);
+  border-radius: 8px;
+  margin-bottom: 12px;
+`;
+
+export const Operation = styled.View`
   padding: 16px;
   background: #fff;
   border: 1px solid rgba(204, 204, 204, 0.3);

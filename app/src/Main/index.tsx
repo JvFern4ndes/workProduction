@@ -25,10 +25,15 @@ import { Entypo,  } from '@expo/vector-icons';
 import { StatusType } from '../types/StatusType';
 
 import { api } from '../utils/api';
+import { useAuth } from '../hooks/useAuth';
 
 export function Main() {
+
+  const { handleLogin } = useAuth();
+
   const [isMachineModalVisible, setIsMachineModalVisible] = useState(false);
   const [selectedMachine, setSelectedMachine] = useState('');
+  const [selectedOperation, setSelectedOperation] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [status, setStatus] = useState<StatusType[]>([]);
@@ -53,20 +58,21 @@ export function Main() {
 
     setIsLoadingOrders(true);
 
-    await new Promise(resolve => setTimeout(resolve, 1000));
     const { data } = await api.get(route);
 
     setOrders(data);
     setIsLoadingOrders(false);
   }
 
-  function handleSaveMachine(machine: string) {
+  function handleSaveMachine(machine: string, operation: string) {
     setSelectedMachine(machine);
+    setSelectedOperation(operation);
     setIsMachineModalVisible(false);
   }
 
   function handleResetOrder() {
     setSelectedMachine('');
+    setSelectedOperation('');
     setCartItems([]);
   }
 
@@ -122,6 +128,7 @@ export function Main() {
       <Container>
         <Header
           selectedMachine={selectedMachine}
+          selectedOperation={selectedOperation}
           onCancelOrder={handleResetOrder}
         />
 
@@ -184,6 +191,8 @@ export function Main() {
               cartItems={cartItems}
               onDecrement={handleDecrementCartItem}
               onConfirmProduction={handleResetOrder}
+              selectedMachine={selectedMachine}
+              selectedOperation={selectedOperation}
             />
           )}
         </FooterContainer>

@@ -9,8 +9,7 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const StatusContainer = styled.View`
-  height: 105px;
-  margin-top: -50px;
+  height: 92px;
 `;
 
 export const OrdersContainer = styled.View`

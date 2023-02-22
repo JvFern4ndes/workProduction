@@ -6,9 +6,10 @@ export async function listProductions(req: Request, res: Response) {
   try {
     const productions = await Production.find()
       .sort({ createdAt: 1 })
-      .populate('details.employee')
-      .populate('details.machine')
-      .populate('details.order');
+      .populate('machine')
+      .populate('order')
+      .populate('operation')
+      .populate('employee');
 
     res.json(productions);
   } catch (error) {

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
+import asyncStorage from '@react-native-async-storage/async-storage';
+
 import { CartItem } from '../../types/CartItem';
 import { Order } from '../../types/Order';
 import { Button } from '../Button';
@@ -18,17 +20,45 @@ import {
   StartContainer,
 } from './styles';
 
+import { api } from '../../utils/api';
+
 interface CartProps {
   cartItems: CartItem[];
   onDecrement: (order: Order) => void;
   onConfirmProduction: () => void;
+  selectedMachine: string;
+  selectedOperation: string;
 }
 
-export function Cart({ cartItems, onDecrement, onConfirmProduction }: CartProps) {
+export function Cart({
+  cartItems,
+  onDecrement,
+  onConfirmProduction,
+  selectedMachine,
+  selectedOperation
+}: CartProps) {
   const [isLoading] = useState(false);
   const [isProductionConfirmedModalVisible, setIsProductionConfirmedModalVisible] = useState(false);
 
-  function handleConfirmProduction() {
+  async function handleConfirmProduction() {
+    const [ cartItem ] = cartItems;
+
+    const payload = {
+      machine: selectedMachine,
+      order: cartItem.order._id,
+      employee: '63eb60090ed76f3a8402ed20',
+      operation: selectedOperation,
+      quantityProduced: 100,
+    };
+
+    console.log(JSON.stringify(payload, null, 2));
+
+    try {
+      await api.post('/productions', payload);
+    } catch ( err: any ) {
+      console.log('err try catch', err);
+    }
+
     setIsProductionConfirmedModalVisible(true);
   }
 

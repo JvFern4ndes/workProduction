@@ -1,34 +1,29 @@
 import { model, Schema } from 'mongoose';
 
 export const Production = model('Production', new Schema({
+  machine: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Machine',
+  },
+  order: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Order',
+  },
+  employee: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Employee',
+  },
   operation: {
-    type: String,
-    enum: ['cnc', 'serra', 'preparation', 'machining'],
-    default: 'waiting',
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Operation',
   },
   quantityProduced: {
     type: Number,
     required: true,
-  },
-  details: {
-    required: true,
-    type: [{
-      employee: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'Employee',
-      },
-      machine: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'Machine',
-      },
-      order: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'Order',
-      },
-    }]
   },
   startedAt: {
     type: Date,

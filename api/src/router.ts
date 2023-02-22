@@ -37,12 +37,19 @@ import { deleteItem } from './app/useCases/Items/deleteItem';
 import { createProduction } from './app/useCases/Productions/createProduction';
 import { listProductions } from './app/useCases/Productions/listProductions';
 import { changeProductionPropertiesValues } from './app/useCases/Productions/changeProductionPropertiesValues';
+import { deleteProduction } from './app/useCases/Productions/deleteProduction';
 
 // Status
 import { createStatus } from './app/useCases/Status/createStatus';
 import { listStatus } from './app/useCases/Status/listStatus';
 import { updateStatus } from './app/useCases/Status/updateStatus';
 import { deleteStatus } from './app/useCases/Status/deleteStatus';
+
+// Operation
+import { createOperation } from './app/useCases/Operations/createOperation';
+import { listOperations } from './app/useCases/Operations/listOperations';
+import { updateOperation } from './app/useCases/Operations/updateOperation';
+import { deleteOperation } from './app/useCases/Operations/deleteOperation';
 
 export const router = Router();
 
@@ -108,6 +115,8 @@ router.post('/productions', createProduction);
 router.get('/productions', listProductions);
 // Update Production
 router.patch('/productions/:productionId', changeProductionPropertiesValues);
+// Delete Production
+router.delete('/productions/:productionId', deleteProduction);
 
 // Create Status
 router.post('/status', createStatus);
@@ -117,3 +126,12 @@ router.get('/status', listStatus);
 router.patch('/status/:statusId', updateStatus);
 // Delete Status
 router.delete('/status/:statusId', deleteStatus);
+
+// Create Operation
+router.post('/operations', createOperation);
+// List Operation
+router.get('/operations', listOperations);
+// Update Operation
+router.patch('/operations/:operationId', updateOperation);
+// Delete Operation
+router.delete('/operations/:operationId', deleteOperation);
