@@ -9,6 +9,7 @@ import {
   OrderHeader,
   ProductionOptionsHeader,
 } from './styles';
+
 import { SelectedOperationOption, SelectedProductionOption } from '../MachineModal';
 
 interface HeaderProps {
