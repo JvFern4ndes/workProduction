@@ -11,9 +11,8 @@ interface OrdersBoardProps {
   productions: Production[];
 }
 
-const DETAILS_PROGRESS: Record<'waiting' | 'in_production' | 'packaging' | 'done'
-, any> = {
-  'waiting': (details: any) => (
+const DETAILS_PROGRESS: Record<string, any> = {
+  'Fila de espera': (details: any) => (
     <div key={details.item._id}>
       <strong>{details.item.name}</strong>
       <span>
@@ -23,7 +22,7 @@ const DETAILS_PROGRESS: Record<'waiting' | 'in_production' | 'packaging' | 'done
       <span>{}</span>
     </div>
   ),
-  'in_production': (details: any) => (
+  'Em produção': (details: any) => (
     <div key={details.item._id}>
       <strong>Ola</strong>
       <span>
@@ -32,11 +31,32 @@ const DETAILS_PROGRESS: Record<'waiting' | 'in_production' | 'packaging' | 'done
       </span>
     </div>
   ),
-  'packaging': () => (
-    <h1>oi</h1>
+  'Embalagem': (details: any) => (
+    <div key={details.item._id}>
+      <strong>Ola</strong>
+      <span>
+        {details.amount}
+        {details.amount > 1 ? ' itens' : ' item'}
+      </span>
+    </div>
   ),
-  'done': () => (
-    <h1>oi</h1>
+  'Pedido pronto': (details: any) => (
+    <div key={details.item._id}>
+      <strong>Ola</strong>
+      <span>
+        {details.amount}
+        {details.amount > 1 ? ' itens' : ' item'}
+      </span>
+    </div>
+  ),
+  'Preparando': (details: any) => (
+    <div key={details.item._id}>
+      <strong>Ola</strong>
+      <span>
+        {details.amount}
+        {details.amount > 1 ? ' itens' : ' item'}
+      </span>
+    </div>
   ),
 };
 
@@ -70,11 +90,17 @@ export function OrdersBoard({ icon, title, orders, productions }: OrdersBoardPro
 
       {orders.length > 0 && (
         <OrdersContainer>
-          {orders.map((order) => (
-            <button type='button' key={order._id} onClick={() => handleOpenModal(order)}>
-              {order.details.map((details) => DETAILS_PROGRESS[order.status](details) )}
-            </button>
-          ))}
+          {orders.map((order) => {
+            return (
+              <button type='button' key={order._id} onClick={() => handleOpenModal(order)}>
+
+                {order.details.map(detail => {
+                  const renderDetails = DETAILS_PROGRESS[order?.status?.name];
+                  return renderDetails?.(detail);
+                })}
+              </button>
+            );
+          })}
         </OrdersContainer>
       )}
     </Board>
