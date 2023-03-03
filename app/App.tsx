@@ -18,8 +18,8 @@ export default function App() {
   return (
     <>
       <StatusBar style='dark'/>
-      <Login />
-      {/* <Main /> */}
+      {/* <Login /> */}
+      <Main />
     </>
   );
 }
