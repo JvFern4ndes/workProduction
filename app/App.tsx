@@ -4,6 +4,8 @@ import { Login } from './src/Login';
 
 import { Main } from './src/Main';
 
+import { AuthContext } from './src/components/Context/authContext';
+
 export default function App() {
   const [isFontsLoaded] = useFonts({
     'GeneralSans-400': require('./src/assets/fonts/GeneralSans-Regular.otf'),
@@ -16,10 +18,10 @@ export default function App() {
   }
 
   return (
-    <>
+    <AuthContext>
       <StatusBar style='dark'/>
       <Login />
       {/* <Main /> */}
-    </>
+    </AuthContext>
   );
 }

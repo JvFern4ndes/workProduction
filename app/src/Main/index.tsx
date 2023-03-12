@@ -21,16 +21,12 @@ import { CartItem } from '../types/CartItem';
 import { Order } from '../types/Order';
 
 import { Text } from '../components/Text';
-import { Entypo,  } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import { StatusType } from '../types/StatusType';
 
 import { api } from '../utils/api';
-import { useAuth } from '../hooks/useAuth';
 
 export function Main() {
-
-  const { handleLogin } = useAuth();
-
   const [isMachineModalVisible, setIsMachineModalVisible] = useState(false);
   const [selectedMachine, setSelectedMachine] = useState('');
   const [selectedOperation, setSelectedOperation] = useState('');

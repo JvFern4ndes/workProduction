@@ -13,7 +13,17 @@ import {
   Input,
 } from './styles';
 
+import { useContext } from 'react';
+import { Context } from '../components/Context/authContext';
+
+// import { useAuth } from '../hooks/useAuth';
+
 export function Login() {
+  const { authenticated, handleLogin } = useContext(Context);
+
+  console.debug('Login', authenticated);
+  // const { handleLogin } = useAuth();
+
   return (
     <>
       <LoginHeader>
@@ -46,7 +56,7 @@ export function Login() {
               />
             </>
 
-            <Button onPress={() => alert('logou')}>
+            <Button onPress={handleLogin}>
               Entrar
             </Button>
           </Form>
