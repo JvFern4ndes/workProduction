@@ -17,9 +17,10 @@ function AuthContext({ children }: AuthContext) {
   const [authenticated, setAuthenticated] = useState(false);
 
   async function handleLogin() {
-    const { data } = await api.post('/authenticate');
+    const { data: { token } } = await api.post('/authenticate');
 
-    setAuthenticated(true);
+    localStorage.setItem('token', JSON.stringify(token));
+    api.defaults.headers.Authorization = token;
   }
 
   return (

@@ -1,10 +1,16 @@
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
-import { Login } from './src/Login';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+
+import { Login } from './src/Login';
 import { Main } from './src/Main';
 
 import { AuthContext } from './src/components/Context/authContext';
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   const [isFontsLoaded] = useFonts({
@@ -19,9 +25,13 @@ export default function App() {
 
   return (
     <AuthContext>
-      <StatusBar style='dark'/>
-      <Login />
-      {/* <Main /> */}
+      <NavigationContainer>
+        <Drawer.Navigator>
+          <Drawer.Screen name='StatusBar' component={StatusBar}/>
+          <Drawer.Screen name='Login' component={Login}/>
+          <Drawer.Screen name='Main' component={Main}/>
+        </Drawer.Navigator>
+      </NavigationContainer>
     </AuthContext>
   );
 }

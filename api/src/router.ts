@@ -50,6 +50,7 @@ import { createOperation } from './app/useCases/Operations/createOperation';
 import { listOperations } from './app/useCases/Operations/listOperations';
 import { updateOperation } from './app/useCases/Operations/updateOperation';
 import { deleteOperation } from './app/useCases/Operations/deleteOperation';
+import { Authentication } from './app/useCases/Auth/Authentication';
 
 export const router = Router();
 
@@ -135,3 +136,5 @@ router.get('/operations', listOperations);
 router.patch('/operations/:operationId', updateOperation);
 // Delete Operation
 router.delete('/operations/:operationId', deleteOperation);
+
+router.post('/authenticate', Authentication);
