@@ -1,3 +1,4 @@
+import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Login } from '../Login';
@@ -10,6 +11,9 @@ export function StackRoutes() {
     <Navigator>
       <Screen
         name='Login'
+        options={{
+          headerShown: false,
+        }}
         component={Login}
       />
       <Screen
