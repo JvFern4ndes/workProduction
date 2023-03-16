@@ -4,11 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
-import { Login } from './src/Login';
-import { Main } from './src/Main';
-
 import { AuthContext } from './src/components/Context/authContext';
+import { Routes } from './src/routes';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,13 +22,7 @@ export default function App() {
 
   return (
     <AuthContext>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name='StatusBar' component={StatusBar}/>
-          <Stack.Screen name='Login' component={Login}/>
-          <Stack.Screen name='Main' component={Main}/>
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Routes />
     </AuthContext>
   );
 }
