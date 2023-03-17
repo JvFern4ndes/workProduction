@@ -13,8 +13,8 @@ import {
   Input,
 } from './styles';
 
-// import { useContext } from 'react';
-// import { Context } from '../components/Context/authContext';
+import { useContext } from 'react';
+import { Context } from '../components/Context/authContext';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -22,9 +22,9 @@ import { useNavigation } from '@react-navigation/native';
 
 export function Login() {
   const navigation = useNavigation();
-  // const { authenticated, handleLogin } = useContext(Context);
+  const { authenticated, handleLogin } = useContext(Context);
 
-  // console.debug('Login', authenticated);
+  console.debug('Login', authenticated);
   // const { handleLogin } = useAuth();
 
   function goToMain() {
@@ -64,7 +64,7 @@ export function Login() {
             </>
 
             {/* handleLogin */}
-            <Button onPress={goToMain}>
+            <Button onPress={handleLogin}>
               Entrar
             </Button>
           </Form>
