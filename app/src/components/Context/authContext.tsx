@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 
 import { api } from '../../utils/api';
+import { history } from '../../utils/history';
 
 const Context = createContext({} as AuthenticatedType);
 
@@ -20,7 +21,9 @@ function AuthContext({ children }: AuthContext) {
     const { data: { token } } = await api.post('/authenticate');
 
     localStorage.setItem('token', JSON.stringify(token));
-    api.defaults.headers.Authorization = token;
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+    history.push('/orders');
+    setAuthenticated(true);
   }
 
   return (

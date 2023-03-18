@@ -1,16 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Router, Switch } from 'react-router';
+import { Router } from 'react-router-dom';
 
 import { useFonts } from 'expo-font';
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 
 import { AuthContext } from './src/components/Context/authContext';
 import { Routes } from './src/routes';
-import { history } from './src/utils/history';
+// import { history } from './src/utils/history';
+import { History } from 'history';
 
 interface Props {
-  history: History;
+  history: History,
+  navigator: History
 }
 
 export default function App({ history }: Props) {
@@ -26,10 +27,8 @@ export default function App({ history }: Props) {
 
   return (
     <AuthContext>
-      <Router history={history}>
-        <Switch>
-          <Routes />
-        </Switch>
+      <Router location={history.location} navigator={history}>
+        <Routes />
       </Router>
     </AuthContext>
   );
