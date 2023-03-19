@@ -8,6 +8,8 @@ export async function Authentication(req: Request, res: Response) {
   try {
     const { userName, password } = req.body;
 
+    console.log({ userName, password });
+
     if (!userName) {
       return res.status(400).json({
         error: 'userName is required',
@@ -32,7 +34,7 @@ export async function Authentication(req: Request, res: Response) {
 
     res.status(201).json({
       user,
-      token: jwt.sign(user, 'PRIVATEKEY'),
+      token: jwt.sign(JSON.stringify(user), 'PRIVATEKEY'),
     });
   } catch (error) {
     console.log(error);

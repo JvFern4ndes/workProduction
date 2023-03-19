@@ -1,5 +1,4 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
 
 import { useFonts } from 'expo-font';
 // import { StatusBar } from 'expo-status-bar';
@@ -8,6 +7,7 @@ import { AuthContext } from './src/components/Context/authContext';
 import { Routes } from './src/routes';
 // import { history } from './src/utils/history';
 import { History } from 'history';
+import { NavigationContainer } from '@react-navigation/native';
 
 interface Props {
   history: History,
@@ -26,10 +26,10 @@ export default function App({ history }: Props) {
   }
 
   return (
-    <AuthContext>
-      <Router location={history.location} navigator={history}>
+    <NavigationContainer>
+      <AuthContext>
         <Routes />
-      </Router>
-    </AuthContext>
+      </AuthContext>
+    </NavigationContainer>
   );
 }

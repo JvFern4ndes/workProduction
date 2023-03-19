@@ -1,5 +1,6 @@
-import { SvgUri } from 'react-native-svg';
+import { useContext, useState } from 'react';
 import { Platform } from 'react-native';
+import { SvgUri } from 'react-native-svg';
 
 import { Button } from '../components/Button';
 import { Text } from '../components/Text';
@@ -13,7 +14,6 @@ import {
   Input,
 } from './styles';
 
-import { useContext } from 'react';
 import { Context } from '../components/Context/authContext';
 
 import { useNavigation } from '@react-navigation/native';
@@ -23,6 +23,9 @@ import { useNavigation } from '@react-navigation/native';
 export function Login() {
   const navigation = useNavigation();
   const { authenticated, handleLogin } = useContext(Context);
+
+  const [userName, setUserName] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   console.debug('Login', authenticated);
   // const { handleLogin } = useAuth();
@@ -55,16 +58,21 @@ export function Login() {
                 placeholder='Usuário'
                 placeholderTextColor='#6d797e'
                 style={{ marginTop: 40 }}
+                onChangeText={setUserName}
               />
               <Input
                 placeholder='Senha'
                 placeholderTextColor='#6d797e'
                 style={{ marginTop: 16, marginBottom: 56 }}
+                onChangeText={setPassword}
               />
             </>
 
             {/* handleLogin */}
-            <Button onPress={handleLogin}>
+            <Button onPress={() => handleLogin({
+              userName,
+              password
+            })}>
               Entrar
             </Button>
           </Form>
