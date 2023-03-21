@@ -18,6 +18,9 @@ export function StackRoutes() {
       />
       <Screen
         name='Main'
+        options={{
+          headerShown: false,
+        }}
         component={Main}
       />
     </Navigator>
